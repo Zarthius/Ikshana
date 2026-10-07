@@ -35,22 +35,38 @@ const socials = [
 
 export default function Contact() {
   return (
-    <Box component="section" id="contact" sx={{ py: { xs: 8, md: 12 }, bgcolor: brandColors.white }}>
+    <Box
+      component="section"
+      id="contact"
+      sx={{ py: { xs: 6, sm: 8, md: 12 }, bgcolor: brandColors.white }}
+    >
       <Container maxWidth="md">
-        <Box sx={{ textAlign: 'center', mb: 5 }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, px: { xs: 0.5, sm: 0 } }}>
           <Typography
             variant="overline"
-            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 2 }}
+            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: { xs: 1.5, sm: 2 } }}
           >
             Get involved
           </Typography>
           <Typography
             variant="h2"
-            sx={{ fontSize: { xs: '1.85rem', md: '2.5rem' }, color: brandColors.navy, mt: 1, mb: 2 }}
+            sx={{
+              fontSize: { xs: '1.6rem', sm: '1.85rem', md: '2.5rem' },
+              color: brandColors.navy,
+              mt: 1,
+              mb: 2,
+              lineHeight: 1.25,
+            }}
           >
             Partner with Ikshana
           </Typography>
-          <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+          <Typography
+            sx={{
+              color: 'text.secondary',
+              lineHeight: 1.7,
+              fontSize: { xs: '0.98rem', sm: '1rem' },
+            }}
+          >
             Whether you want to volunteer, collaborate with a school or nonprofit, or simply learn
             more — we’d love to hear from you.
           </Typography>
@@ -59,25 +75,33 @@ export default function Contact() {
         <Paper
           elevation={0}
           sx={{
-            p: { xs: 3, md: 5 },
-            borderRadius: 4,
+            p: { xs: 2.5, sm: 3, md: 5 },
+            borderRadius: { xs: 3, md: 4 },
             background: `linear-gradient(135deg, ${brandColors.white} 0%, ${brandColors.blush} 100%)`,
             border: '1px solid',
             borderColor: 'rgba(232, 36, 100, 0.15)',
+            overflow: 'hidden',
           }}
         >
           <Stack spacing={3}>
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              sx={{ justifyContent: 'center', flexWrap: 'wrap' }}
+              sx={{ justifyContent: 'center', alignItems: 'stretch' }}
             >
               <Button
                 variant="contained"
                 size="large"
                 startIcon={<EmailRoundedIcon />}
                 href="mailto:saadhakfoundation@gmail.com"
-                sx={{ minWidth: 260 }}
+                sx={{
+                  width: { xs: '100%', sm: 'auto' },
+                  minWidth: { sm: 260 },
+                  justifyContent: { xs: 'center', sm: 'center' },
+                  fontSize: { xs: '0.85rem', sm: '0.9375rem' },
+                  px: { xs: 2, sm: 3 },
+                  wordBreak: 'break-all',
+                }}
               >
                 saadhakfoundation@gmail.com
               </Button>
@@ -87,10 +111,14 @@ export default function Contact() {
                 startIcon={<PhoneRoundedIcon />}
                 href="tel:+918448620886"
                 sx={{
-                  minWidth: 220,
+                  width: { xs: '100%', sm: 'auto' },
+                  minWidth: { sm: 220 },
                   borderColor: brandColors.navy,
                   color: brandColors.navy,
-                  '&:hover': { borderColor: brandColors.primary, bgcolor: 'rgba(232,36,100,0.06)' },
+                  '&:hover': {
+                    borderColor: brandColors.primary,
+                    bgcolor: 'rgba(232,36,100,0.06)',
+                  },
                 }}
               >
                 +91 8448620886
@@ -103,7 +131,16 @@ export default function Contact() {
               </Typography>
             </Divider>
 
-            <Stack direction="row" spacing={1.5} sx={{ justifyContent: 'center' }}>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.5}
+              useFlexGap
+              sx={{
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                alignItems: 'stretch',
+              }}
+            >
               {socials.map((s) => (
                 <Button
                   key={s.label}
@@ -114,6 +151,8 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   sx={{
+                    width: { xs: '100%', sm: 'auto' },
+                    minWidth: { sm: 140 },
                     borderColor: brandColors.navy,
                     color: brandColors.navy,
                     '&:hover': { borderColor: brandColors.primary, color: brandColors.primary },
@@ -126,7 +165,7 @@ export default function Contact() {
 
             <Typography
               variant="body2"
-              sx={{ textAlign: 'center', color: 'text.secondary', pt: 1 }}
+              sx={{ textAlign: 'center', color: 'text.secondary', pt: 1, wordBreak: 'break-word' }}
             >
               Prefer email? Reach us at{' '}
               <Link

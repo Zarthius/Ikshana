@@ -13,9 +13,17 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          overflowX: 'clip',
+          width: '100%',
+        }}
+      >
         <Navbar />
-        <Box component="main" sx={{ flexGrow: 1 }}>
+        <Box component="main" sx={{ flexGrow: 1, width: '100%', overflowX: 'clip' }}>
           <Hero />
           <About />
           <Programs />

@@ -23,23 +23,37 @@ export default function Team() {
     <Box
       component="section"
       id="team"
-      sx={{ py: { xs: 8, md: 12 }, bgcolor: brandColors.blush }}
+      sx={{ py: { xs: 6, sm: 8, md: 12 }, bgcolor: brandColors.blush }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 }, px: { xs: 0.5, sm: 0 } }}>
           <Typography
             variant="overline"
-            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 2 }}
+            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: { xs: 1.5, sm: 2 } }}
           >
             Team spotlight
           </Typography>
           <Typography
             variant="h2"
-            sx={{ fontSize: { xs: '1.85rem', md: '2.5rem' }, color: brandColors.navy, mt: 1, mb: 2 }}
+            sx={{
+              fontSize: { xs: '1.6rem', sm: '1.85rem', md: '2.5rem' },
+              color: brandColors.navy,
+              mt: 1,
+              mb: 2,
+              lineHeight: 1.25,
+            }}
           >
             People behind Ikshana
           </Typography>
-          <Typography sx={{ color: 'text.secondary', maxWidth: 520, mx: 'auto', lineHeight: 1.7 }}>
+          <Typography
+            sx={{
+              color: 'text.secondary',
+              maxWidth: 520,
+              mx: 'auto',
+              lineHeight: 1.7,
+              fontSize: { xs: '0.98rem', sm: '1rem' },
+            }}
+          >
             Guided by professional care and a nonprofit rooted in community service.
           </Typography>
         </Box>
@@ -48,20 +62,25 @@ export default function Team() {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: 3,
+            gap: { xs: 2, sm: 3 },
             maxWidth: 900,
             mx: 'auto',
           }}
         >
           {people.map((person) => (
-            <Card key={person.name} sx={{ height: '100%' }}>
-              <CardContent sx={{ p: { xs: 3, md: 4 } }}>
-                <Stack direction="row" spacing={2.5} sx={{ alignItems: 'flex-start' }}>
+            <Card key={person.name} sx={{ height: '100%', overflow: 'hidden' }}>
+              <CardContent sx={{ p: { xs: 2.5, sm: 3, md: 4 }, '&:last-child': { pb: { xs: 2.5, sm: 3, md: 4 } } }}>
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  spacing={{ xs: 2, sm: 2.5 }}
+                  sx={{ alignItems: { xs: 'center', sm: 'flex-start' }, textAlign: { xs: 'center', sm: 'left' } }}
+                >
                   <Avatar
                     alt={person.name}
                     sx={{
-                      width: 88,
-                      height: 88,
+                      width: { xs: 80, sm: 88 },
+                      height: { xs: 80, sm: 88 },
+                      flexShrink: 0,
                       border: `3px solid ${brandColors.secondary}`,
                       bgcolor: brandColors.primary,
                       color: brandColors.white,
@@ -71,8 +90,11 @@ export default function Team() {
                   >
                     {person.initials}
                   </Avatar>
-                  <Box>
-                    <Typography variant="h6" sx={{ color: brandColors.navy, lineHeight: 1.3 }}>
+                  <Box sx={{ minWidth: 0, width: '100%' }}>
+                    <Typography
+                      variant="h6"
+                      sx={{ color: brandColors.navy, lineHeight: 1.3, fontSize: { xs: '1.1rem', sm: '1.25rem' } }}
+                    >
                       {person.name}
                     </Typography>
                     <Typography
@@ -99,7 +121,14 @@ export default function Team() {
 
         <Typography
           variant="body2"
-          sx={{ textAlign: 'center', color: 'text.secondary', mt: 4, maxWidth: 560, mx: 'auto' }}
+          sx={{
+            textAlign: 'center',
+            color: 'text.secondary',
+            mt: { xs: 3, md: 4 },
+            maxWidth: 560,
+            mx: 'auto',
+            px: { xs: 0.5, sm: 0 },
+          }}
         >
           Project Ikshana is an initiative of{' '}
           <Box component="span" sx={{ fontWeight: 600, color: brandColors.navy }}>

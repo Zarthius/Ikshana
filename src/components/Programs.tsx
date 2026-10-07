@@ -12,12 +12,14 @@ import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import { brandColors } from '../theme';
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 const programs = [
   {
     id: 'human-diary',
     title: 'Human Diary',
     subtitle: 'A safe support group under Project Ikshana',
-    image: '/images/human-diary.jpg',
+    image: asset('images/human-diary.jpg'),
     fallbackAspect: true,
     icon: <GroupsRoundedIcon />,
     tags: ['Mental health', 'World Mental Health Day', 'Operation Smile'],
@@ -30,7 +32,7 @@ const programs = [
     id: 'pocso',
     title: 'POCSO Awareness Workshops',
     subtitle: 'Personal safety & child protection education',
-    image: '/images/pocso-2.jpg',
+    image: asset('images/pocso-2.jpg'),
     icon: <SchoolRoundedIcon />,
     tags: ['Child safety', 'Schools', 'Rights & boundaries'],
     body: [
@@ -42,28 +44,46 @@ const programs = [
 
 export default function Programs() {
   return (
-    <Box component="section" id="programs" sx={{ py: { xs: 8, md: 12 }, bgcolor: brandColors.white }}>
+    <Box
+      component="section"
+      id="programs"
+      sx={{ py: { xs: 6, sm: 8, md: 12 }, bgcolor: brandColors.white }}
+    >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 }, px: { xs: 0.5, sm: 0 } }}>
           <Typography
             variant="overline"
-            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 2 }}
+            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: { xs: 1.5, sm: 2 } }}
           >
             Programs & impact
           </Typography>
           <Typography
             variant="h2"
-            sx={{ fontSize: { xs: '1.85rem', md: '2.5rem' }, color: brandColors.navy, mt: 1, mb: 2 }}
+            sx={{
+              fontSize: { xs: '1.6rem', sm: '1.85rem', md: '2.5rem' },
+              color: brandColors.navy,
+              mt: 1,
+              mb: 2,
+              lineHeight: 1.25,
+            }}
           >
             How Ikshana shows up
           </Typography>
-          <Typography sx={{ color: 'text.secondary', maxWidth: 560, mx: 'auto', lineHeight: 1.7 }}>
+          <Typography
+            sx={{
+              color: 'text.secondary',
+              maxWidth: 560,
+              mx: 'auto',
+              lineHeight: 1.7,
+              fontSize: { xs: '0.98rem', sm: '1rem' },
+            }}
+          >
             Two flagship efforts — support groups that hold space for mental health, and workshops
             that put child-safety knowledge in young hands.
           </Typography>
         </Box>
 
-        <Stack spacing={4}>
+        <Stack spacing={{ xs: 3, md: 4 }}>
           {programs.map((program, index) => (
             <Card
               key={program.id}
@@ -78,8 +98,10 @@ export default function Programs() {
                 image={program.image}
                 alt={program.title}
                 sx={{
-                  height: { xs: 240, md: '100%' },
+                  height: { xs: 200, sm: 240, md: '100%' },
                   minHeight: { md: 340 },
+                  maxHeight: { xs: 260, md: 'none' },
+                  width: '100%',
                   objectFit: program.fallbackAspect ? 'contain' : 'cover',
                   bgcolor: program.fallbackAspect ? brandColors.blush : undefined,
                   order: { xs: 0, md: index % 2 === 1 ? 2 : 0 },
@@ -87,22 +109,45 @@ export default function Programs() {
               />
               <CardContent
                 sx={{
-                  p: { xs: 3, md: 4 },
+                  p: { xs: 2.5, sm: 3, md: 4 },
+                  '&:last-child': { pb: { xs: 2.5, sm: 3, md: 4 } },
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
                   order: 1,
+                  minWidth: 0,
                 }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, color: 'primary.main' }}>
-                  {program.icon}
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: 'primary.main' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 1,
+                    mb: 1,
+                    color: 'primary.main',
+                    minWidth: 0,
+                  }}
+                >
+                  <Box sx={{ flexShrink: 0, mt: 0.25 }}>{program.icon}</Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: 600,
+                      color: 'primary.main',
+                      lineHeight: 1.4,
+                    }}
+                  >
                     {program.subtitle}
                   </Typography>
                 </Box>
                 <Typography
                   variant="h4"
-                  sx={{ color: brandColors.navy, mb: 2, fontSize: { xs: '1.5rem', md: '1.75rem' } }}
+                  sx={{
+                    color: brandColors.navy,
+                    mb: 2,
+                    fontSize: { xs: '1.35rem', sm: '1.5rem', md: '1.75rem' },
+                    lineHeight: 1.3,
+                  }}
                 >
                   {program.title}
                 </Typography>
@@ -121,6 +166,7 @@ export default function Programs() {
                         bgcolor: 'rgba(232, 36, 100, 0.08)',
                         color: brandColors.navy,
                         fontWeight: 500,
+                        height: 28,
                       }}
                     />
                   ))}

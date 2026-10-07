@@ -59,10 +59,33 @@ const theme = createTheme({
           borderRadius: 28,
           paddingInline: 24,
           paddingBlock: 10,
+          minHeight: 44,
           boxShadow: 'none',
           '&:hover': {
             boxShadow: '0 4px 14px rgba(232, 36, 100, 0.28)',
           },
+        },
+        sizeLarge: {
+          minHeight: 48,
+          paddingBlock: 12,
+          paddingInline: 28,
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          minWidth: 44,
+          minHeight: 44,
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          minHeight: 48,
+          paddingTop: 12,
+          paddingBottom: 12,
         },
       },
     },
@@ -77,6 +100,18 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: { boxShadow: '0 1px 0 rgba(15, 35, 59, 0.08)' },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          paddingLeft: 16,
+          paddingRight: 16,
+          '@media (min-width:600px)': {
+            paddingLeft: 24,
+            paddingRight: 24,
+          },
+        },
       },
     },
   },
